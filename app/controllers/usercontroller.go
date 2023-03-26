@@ -1,11 +1,9 @@
 package controllers
 
 import (
-	"encoding/json"
+	"E-commerce/app/services"
 	"fmt"
 	"net/http"
-
-	"../services"
 )
 
 
@@ -18,11 +16,12 @@ type User struct {
 func VerifyUser(w http.ResponseWriter, r *http.Request) {
     // Parse the request body to get the username and password
     var user User
-    err := json.NewDecoder(r.Body).Decode(&user)
+   /* err := json.NewDecoder(r.Body).Decode(&user)
     if err != nil {
         http.Error(w, err.Error(), http.StatusBadRequest)
+        fmt.Println(err.Error())
         return
-    }
+    }*/
 	
 	if services.VerifyUser(user.Username , user.Password){
 		w.WriteHeader(http.StatusOK)
@@ -35,6 +34,3 @@ func VerifyUser(w http.ResponseWriter, r *http.Request) {
 	}
     
 }
-
-
-

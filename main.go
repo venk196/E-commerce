@@ -1,16 +1,17 @@
-package app
+package main
 
 import (
+	"E-commerce/app/controllers"
+	"fmt"
 	"log"
 	"net/http"
-
-	"github.com/venk196/E-commerce/tree/main/controllers/usercontroller"
 )
 
 func main() {
     // Register the VerifyUser method of the UserController to handle POST requests to "/api/verify"
-    http.HandleFunc("/api/verify", usercontroller.VerifyUser)
+    http.HandleFunc("/api/verify", controllers.VerifyUser)
+    fmt.Println("TEST IS WORKING")
 
     // Start the server and listen for requests
-    log.Fatal(http.ListenAndServe(":8080", nil))
+    log.Fatal(http.ListenAndServe(":8000", nil))
 }
